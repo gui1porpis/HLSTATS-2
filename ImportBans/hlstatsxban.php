@@ -127,7 +127,7 @@ if ($useamx)
     // Read unbanned players
     $ubcnt = 0;
 	// Handles (apparently) pre-6.0 version DB or lower
-    if ($unbans = $con->query("SELECT `player_id` FROM `".AMX_PREFIX."_banhistory` WHERE `ban_length` = 0")) {
+    if ($unbans = $con->query("SELECT `player_id` FROM `".AMX_PREFIX."_bans` WHERE `expired` = 1")) {
 		while ($unbanned = $unbans->fetch_array(MYSQL_ASSOC)) {
 			if(!in_array($unbanned["player_id"], $bannedplayers) && !in_array($unbanned["player_id"], $unbannedplayers))
 			{
